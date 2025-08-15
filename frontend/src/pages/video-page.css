@@ -1,0 +1,13 @@
+.video-page h2 { margin-bottom:10px; }
+.video-page p { margin:8px 0; }
+.new-video-form input, .new-video-form textarea { margin:6px 0; }
+.video-list { list-style:none; padding:0; }
+.video-list li {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px;
+  background:var(--panel);
+  border-radius:8px;
+  margin-bottom:8px;
+}

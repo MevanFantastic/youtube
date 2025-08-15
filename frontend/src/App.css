@@ -1,0 +1,88 @@
+:root{
+  --header-height:64px;
+  --category-height:48px;
+  --max-width:1200px;
+  --gap:16px;
+  --sidebar-width:240px;
+  --radius:10px;
+  --muted:#9aa4ad;
+  --glass: rgba(0,0,0,0.04);
+  --text:#111;
+}
+
+/* fix */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: 1000;
+  background: linear-gradient(180deg,#ff4747 0%, rgba(255,71,71,0.06) 90%, transparent 100%);
+  box-shadow: none;
+}
+
+
+.home-page,
+.channel-page,
+.video-page,
+.form-container {
+  padding-top: calc(var(--header-height) + var(--category-height) + 12px);
+}
+
+.header-space { height: var(--header-height); }
+
+/* page layout */
+.home-page {
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+}
+
+.sidebar {
+  position: fixed;
+  top: calc(var(--header-height) + var(--category-height));
+  left: 0;
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--header-height) - var(--category-height));
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 111, 111, 0.85));
+  border-right: 1px solid rgba(0,0,0,0.06);
+  transform: translateX(-110%);
+  transition: transform .22s ease;
+  z-index: 1200;
+  overflow:auto;
+}
+.sidebar.visible { transform: translateX(0); }
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  padding: 6px 18px 48px;
+  align-content: start;
+  max-width: var(--max-width);
+  margin: 12px auto 48px; /* centers grid */
+  box-sizing: border-box;
+}
+
+@media (max-width:1200px) { .video-grid { grid-template-columns: repeat(3,1fr); } }
+@media (max-width:900px)  { .video-grid { grid-template-columns: repeat(2,1fr); margin-top: 8px; } }
+@media (max-width:480px)  { .video-grid { grid-template-columns: 1fr; padding:12px; gap:12px; margin-top:6px; } }
+
+.card { background: white; border-radius: var(--radius); overflow:hidden; transition: transform .12s ease, box-shadow .12s ease; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+
+.channel-page, .video-page {
+  max-width: var(--max-width);
+  margin: 12px auto;
+  padding: 12px;
+}
+.video-page video { background: #000; border-radius:8px; }
+
+/* comments */
+.add-comment textarea { width: 100%; min-height: 70px; resize: vertical; margin-top:8px; }
+.comments-list { list-style:none; margin-top:12px; }
+.comments-list li { background: var(--glass); padding:10px; border-radius:8px; margin-bottom:8px; }
+/*button text*/
+.btn-small { padding:6px 8px; font-size:14px; }
+.muted { color: var(--muted); font-size:13px; }

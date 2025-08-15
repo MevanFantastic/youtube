@@ -1,0 +1,27 @@
+.sidebar {
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  width: var(--sidebar-width);
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(8,12,18,0.7), rgba(6,8,12,0.6));
+  border-right: 1px solid rgba(255,255,255,0.02);
+  overflow:auto;
+  transition: transform .18s ease;
+  z-index:20;
+}
+.sidebar button {
+  display:block;
+  width:100%;
+  text-align:left;
+  margin-bottom:8px;
+  padding:10px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.03);
+  border-radius:8px;
+  color:var(--text);
+}
+@media (max-width:900px){
+  .sidebar { position:fixed; left:0; top:var(--header-height); transform:translateX(-280px); box-shadow:0 8px 30px rgba(0,0,0,0.6); }
+  .sidebar.visible { transform:translateX(0); }
+}
